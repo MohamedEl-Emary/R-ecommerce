@@ -1,0 +1,56 @@
+<ng-container *ngIf="products.length !=0">
+   <div class="container">
+    <div class="card-table">
+        <div class="cart-product">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Product Name</th>
+                            <th>Product Image</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of products; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{item.title}}</td>
+                            <td><img style="width: 100px;" src="{{item.image}}" alt=""></td>
+                            <td>EGP {{item.price}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>EGP{{item.totla}}</td>
+                            <td><button (click)="removeItem(item)" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button></td>
+    
+                        </tr>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td><button (click)="emptyCart()" class="btn btn-danger">Empty Cart</button></td>
+                            <td><button routerLink="" class="btn btn-primary">Continue Shopping</button></td>
+                            <td><button class="btn btn-success">Check out</button></td>
+                            <td><strong>Total: EGP {{grandTotal}}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+        </div>
+    </div>
+   </div>
+</ng-container>
+
+<ng-container *ngIf="products.length==0">
+    <div class="container">
+        <div class="card">
+            <h5 class="card-title fw-bold fs-2">My Cart</h5>
+            <div class="center">
+                <img src="assets/img/cart.svg" alt="">
+                <h4>Your Cart Is Empty!</h4>
+                <h6>Add items Now ^^</h6>
+                <button routerLink="" class="btnn btn btn-success">Start Shopping</button>
+            </div>
+        </div>
+      
+    </div>
+</ng-container>

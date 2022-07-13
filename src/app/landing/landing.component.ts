@@ -5,11 +5,17 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })
+
 export class LandingComponent implements OnInit {
-
+  status:boolean = false;
   constructor() { }
-
   ngOnInit(): void {
+    
   }
-
+  
+  changeIcon(){
+    this.status = !this.status;
+     
+  }
+  
 }

@@ -1,0 +1,86 @@
+<header class="section-header">
+
+    <nav class="navbar top-bar p-0">
+    <div class="container-md top-bar">
+      <div class="container" >
+      <h2>Free delivery on your first order !!!</h2>
+      
+      </div>
+      </div> <!-- navbar-collapse .// -->
+     <!-- container //  -->
+    </nav> <!-- header-top-light.// -->
+    
+    <section class="header-main border-bottom bg-white">
+      <div class="container-md">
+           <div class="row p-5 pt-3 pb-3 d-flex align-items-center">
+               <a style="text-decoration:none ;" routerLink="" class="col-md-2 con">
+                  <img  class="logo" src="assets/img/logo.png" width="100"> <span class="head1">R&R</span>
+               </a>
+               <div class="col-md-7">
+            <div class="d-flex form-inputs search-bar">
+            <input class="form-control" type="text" placeholder="Search any product...">
+            
+            <div class="search-icon">
+              <i class="bi bi-search"></i>
+            </div>
+            </div>
+            
+               </div>
+               <div class="col-md-1">
+                <button type="button" class="btn btnn">SEARCH</button>
+               </div>
+             
+               
+               <div class="col-md-1 cart">
+                   <div class="d-flex d-md-flex flex-row align-items-center">
+                       <a class="shop-bag" routerLink="Cart"><i class="bi bi-cart3">
+                        <span class="position-absolute ms-2 translate-middle badge rounded-pill bg-success fs-6">{{totalItem}}</span>
+  
+                       </i></a>
+                       
+                   </div>           
+               </div>
+           </div>
+      </div> 
+    </section>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+      <div class="container-lg nav-cat">
+        <a class="navbar-brand d-md-none d-md-flex" href="#">Categories</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <div class="dropdown">
+            
+            <a class="nav-link dropdown-toggle account" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person"></i> Account
+            </a>
+          
+            <ul class="dropdown-menu col-12" aria-labelledby="dropdownMenuLink">
+              <li class=""><a href="#" type="button" class="btn  col-11 login">Sign in</a></li>
+              <div class="cut"><span></span></div>
+              <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> My Account</a></li>
+              <li><a class="dropdown-item" href="#"><i class="bi bi-heart"></i> Favourites-L</a></li>
+            </ul>
+          </div>
+          <ul class="navbar-nav px-10">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" routerLink="Electronics"><i class="bi bi-tv"></i> Electronics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="bi bi-tag"></i> Fashion</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="bi bi-house-door"></i> Home & Office</a>
+            </li> 
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="bi bi-lamp"></i> Furnitures</a>
+            </li>
+         
+          </ul>
+          
+        </div>
+      </div>
+    </nav>
+    </header>
