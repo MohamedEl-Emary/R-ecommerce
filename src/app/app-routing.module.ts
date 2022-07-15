@@ -4,12 +4,14 @@ import { CartComponent } from './cart/cart.component';
 import { ElectronicsComponent } from './electronics/electronics.component';
 import { FavListComponent } from './fav-list/fav-list.component';
 import { LandingComponent } from './landing/landing.component';
+import { ProductFormComponent } from './product-form/product-form.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
   {path:'Electronics',component:ElectronicsComponent},
   {path:'Cart',component:CartComponent},
-  {path:'Fav-list',component:FavListComponent}
+  {path:'Fav-list',component:FavListComponent},
+  {path:'Product-Form',component:ProductFormComponent}
 ];
 
 @NgModule({

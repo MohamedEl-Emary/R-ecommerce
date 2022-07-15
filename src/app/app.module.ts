@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import {HttpClientModule} from '@angular/common/http';
 import { CartComponent } from './cart/cart.component';
 import { FavListComponent } from './fav-list/fav-list.component';
+import { ProductFormComponent } from './product-form/product-form.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FavListComponent } from './fav-list/fav-list.component';
     HeaderComponent,
     FooterComponent,
     CartComponent,
-    FavListComponent
+    FavListComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
