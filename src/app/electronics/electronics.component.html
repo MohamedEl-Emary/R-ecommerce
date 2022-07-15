@@ -11,7 +11,7 @@
                 <h5 class="price font-weight-bold"><strong>EGP {{item.price}}</strong></h5>
                 <div class="row">
                   <button (click)=addtocart(item) class="mb-2 btn btn-success" href=""><i class="bi bi-bag-plus-fill"></i> Add to Cart</button>
-                <button class="btn btn-outline-danger "><i class="bi bi-heart"></i> Add to Favorites</button>
+                <button (click)=addtocfav(item) class="btn btn-outline-danger "><i class="bi bi-heart"></i> Add to Favorites</button>
                 </div>
             </div>
           </div>

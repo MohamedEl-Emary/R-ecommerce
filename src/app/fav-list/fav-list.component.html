@@ -1,0 +1,53 @@
+<div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+    <ng-container *ngIf="products.length !=0">
+        <div class="container">
+         <div class="card-table">
+             <div class="table-responsive">
+                     <table class="table table-borderless">
+                         <thead class="bg-danger">
+                             <tr>
+                                 <th scope="col" class="border-0 bg-danger"><div class="py-2 text-uppercase">No</div></th>
+                                 <th scope="col" class="border-0 bg-danger"><div class="py-2 text-uppercase">Image</div></th>
+                                 <th scope="col" class="border-0 bg-danger"><div class="py-2 text-uppercase">Name</div></th>
+                                 <th scope="col" class="border-0 bg-danger"><div class="py-2 text-uppercase">Descriptiond</div></th>
+                                 <th scope="col" class="border-0 bg-danger"><div class="py-2 text-uppercase">Price</div></th>
+                                 <th scope="col" class="border-0 bg-danger"><div class="py-2 text-uppercase">Remove</div></th>
+                                 <th scope="col" class="border-0 bg-danger"><div class="py-2 text-uppercase">Cart</div></th>
+
+                             </tr>
+                         </thead>
+                         <tbody>
+                             <tr *ngFor="let item of products; let i = index">
+                                 <td class="border-0 align-middle">{{i+1}}</td>
+                                 <td class="border-0 align-middle"><img class="img-fluid rounded shadow-sm" style="width: 100px;" src="{{item.image}}" alt=""></td>
+                                 <td class="border-0 align-middle">{{item.title}}</td>
+                                 <td class="des border-0 align-middle">{{item.description}}</td>
+                                 <td class="border-0 align-middle"><strong>{{item.price}}</strong></td>
+                                 <td class="border-0 align-middle"><button (click)=removeItem(item) class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button> </td>
+                                 <td class="border-0 align-middle"> <button (click)=addtocart(item) class="btn btn-outline-success" ><i class="bi bi-bag-plus-fill"></i></button></td>   
+                             </tr>
+                        
+                         </tbody>
+                     </table>
+                     
+             </div>
+         </div>
+        </div>
+     </ng-container>
+     
+</div>
+
+<ng-container *ngIf="products.length==0">
+    <div class="container">
+        <div class="card">
+            <h5 class="card-title fw-bold fs-2">My Favorites</h5>
+            <div class="center">
+                <img src="assets/img/fav.svg" alt="">
+                <h4>Your Favorites-List is Empty!</h4>
+                <h6>Add items Now ^^</h6>
+                <button routerLink="" class="btnn btn btn-danger">Start Shopping</button>
+            </div>
+        </div>
+      
+    </div>
+</ng-container>

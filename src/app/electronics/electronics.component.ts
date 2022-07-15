@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
 import { CartService } from '../service/cart.service';
+import { FavListService } from '../service/fav-list.service';
 
 @Component({
   selector: 'app-electronics',
@@ -11,7 +12,7 @@ export class ElectronicsComponent implements OnInit {
 
   status:boolean = false;
   public productList : any;
-  constructor(private api : ApiService, private cartService : CartService) { }
+  constructor(private api : ApiService, private cartService : CartService, private favListService : FavListService) { }
   ngOnInit(): void {
     this.api.getProduct()
     .subscribe(res=>{
@@ -26,6 +27,10 @@ export class ElectronicsComponent implements OnInit {
   }
   addtocart(item:any){
     this.cartService.addtoCart(item);
+
+  }
+  addtocfav(item:any){
+    this.favListService.addtoFav(item);
 
   }
   changeIcon(){
