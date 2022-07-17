@@ -11,6 +11,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { CartComponent } from './cart/cart.component';
 import { FavListComponent } from './fav-list/fav-list.component';
 import { ProductFormComponent } from './product-form/product-form.component';
+import { ProductPageComponent } from './product-page/product-page.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ProductFormComponent } from './product-form/product-form.component';
     FooterComponent,
     CartComponent,
     FavListComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductPageComponent
   ],
   imports: [
     BrowserModule,
