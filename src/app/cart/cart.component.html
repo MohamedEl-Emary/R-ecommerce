@@ -26,15 +26,30 @@
                                  <td class="border-0 align-middle"><button (click)="removeItem(item)" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button></td>
          
                              </tr>
-                             <tr>
-                                 <td colspan="2"></td>
-                                 <td><button (click)="emptyCart()" class="btn btn-danger">Empty Cart</button></td>
-                                 <td><button routerLink="" class="btn btn-primary">Continue Shopping</button></td>
-                                 <td><button class="btn btn-success">Check out</button></td>
-                                 <td><strong>Total: EGP {{grandTotal}}</strong></td>
-                             </tr>
+                        
+                             
                          </tbody>
                      </table>
+                     <div class="row mb-4 d-flex justify-content-end" style="gap:40px ;">
+		
+						<div class="col-sm-2">
+							<div class="form-group">
+    							<input style="height:35px ;" type="text" class="form-control p-0" id="promo" placeholder="Promo Code" required>
+ 							</div>
+						</div>
+						<div class="col-sm-4">
+							<button class="btn btn-success"><i class="bi bi-percent"></i> Applay Now</button>
+						</div>
+					</div>
+                     <div style="max-width: 80%;" class="row">
+                            <div class="col-md-12 d-flex justify-content-between">
+                                <button (click)="emptyCart()" class="btn btn-danger">Empty Cart</button>
+                                <button routerLink="" class="btn btn-primary">Continue Shopping</button>
+                                <a routerLink="//checkout" class="btn btn-success">Check out</a>
+                                <strong>Total: EGP {{grandTotal}}</strong>
+                                
+                            </div>
+                     </div>
                      
              </div>
          </div>
