@@ -22,6 +22,7 @@ export class CartComponent implements OnInit ,AfterViewInit{
   ngOnInit(): void {
     this.cartService.getProducts()
     .subscribe(res=>{
+      console.log(res);
       this.products = res;
       this.grandTotal = this.cartService.getTotalPrice();
       this.cartService.setTotalPrice(this.grandTotal);

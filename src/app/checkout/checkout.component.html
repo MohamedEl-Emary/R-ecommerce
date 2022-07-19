@@ -5,8 +5,7 @@
 			<div class="nav nav-tabs mb-3 justify-content-center" id="nav-tab" role="tablist">
 				<button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Points</button>
 				<button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Paypal</button>
-				<button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">CreditCard</button>
-			</div>
+ 			</div>
 		</nav>
 		<div class="tab-content p-3 border bg-light" id="nav-tabContent">
 			<div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-points-tab">
@@ -19,7 +18,7 @@
                 </div>
                 <div class="row mb-2">
                     <div class="col-sm-12">
-                        <button style="width: 100%;" type="button" class="btn btn-primary btn-block" (click)="payLocal()">Pay</button>
+                        <button style="width: 100%;" type="button" class="btn btn-primary btn-block" (click)="payLocal('cash')">Pay</button>
                     </div>
                 </div>
 
@@ -34,60 +33,11 @@
                 </div>
                 <div class="row mb-2">
                     <div class="col-sm-12">
-                        <button style="width: 100%;" type="button" class="btn btn-primary btn-block">Pay</button>
-                    </div>
+                      <div id="mypaypalButtons" #payment></div>                    </div>
                 </div>
 
 			</div>
-			<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-CreditCard-tab">
-                <div class="row d-flex justify-content-center">
-                    <img src="assets/img/cc.png" style="width:100px ; margin-bottom: 20px;" alt="Paypal">
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="form-group">
-                        <input class="form-control p-0" id="ccn" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" required>
-                     </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="form-group">
-                        <input type="text" class="form-control p-0" id="name" required placeholder="Name on card">
-                     </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="form-group">
-                        <input type="text" class="form-control p-0" id="address" required placeholder="Full address">
-                     </div>
-                    </div>
-                </div>
-                <div class="row">
 
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <input type="month" class="form-control p-0" id="expdate" required>
-                         </div>
-                    </div>
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <input type="text" maxlength="13" class="form-control p-0" id="cvv" required><label class="form-control-placeholder p-0" for="cvv">CVV</label>
-                    </div>
-                    </div>
-                </div>
-
-                <div class="row lrow mt-4 mb-3">
-                    <div class="col-sm-8 col-12"><h3>Grand Total:</h3></div>
-                    <div class="col-sm-4 col-12"><h5><strong>{{totalPrice}}</strong></h5></div>
-                </div>
-                <div class="row mb-2">
-                    <div class="col-sm-12">
-                        <button style="width: 100%;" type="button" class="btn btn-primary btn-block">Pay</button>
-                    </div>
-                </div>
-			</div>
 		</div>
 	</div>
 </body>
