@@ -1,3 +1,4 @@
+import { ApiService } from './../service/api.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,14 +9,22 @@ import { Component, OnInit } from '@angular/core';
 
 export class LandingComponent implements OnInit {
   status:boolean = false;
-  constructor() { }
+  top!:Array<any>;
+  constructor(private api:ApiService) { }
   ngOnInit(): void {
-    
+
+   this.TopSelling();
   }
-  
+
   changeIcon(){
     this.status = !this.status;
-     
+
   }
-  
+  TopSelling(){
+   this.api.getTopSelling().subscribe(res=>{
+    console.log(res);
+    this.top = res;
+   });
+  }
+
 }

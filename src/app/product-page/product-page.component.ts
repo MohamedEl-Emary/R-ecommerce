@@ -39,8 +39,8 @@ this.apiService.getProductById(this.productId).subscribe(res=>{
 
     }
 
-    addtocart(){
-      this.cartService.addtoCart(this.product);
+    addtocart(item:any){
+      this.cartService.addtoCart(item);
 
     }
 

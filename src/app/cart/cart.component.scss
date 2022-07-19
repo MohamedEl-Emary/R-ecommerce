@@ -10,11 +10,11 @@
         top: 0;
     }
 }
-.center{ 
+.center{
     img{
         width:300px
-    } 
-    
+    }
+
 }
 .btnn{
     padding: 10px 50px;
@@ -27,4 +27,74 @@
 }
 .bg-success{
     color: #fff;
+}
+
+
+.exist-name{
+  color: red;
+  font-style: normal;
+}
+
+
+.text {
+  padding: 50px;
+  font-family: "Sans-Serif";
+  color: #666;
+}
+
+.inputcontainer {
+  position: relative;
+}
+
+input {
+  width: 100%;
+  font-size: 20px;
+  box-sizing: border-box;
+}
+
+.icon-container {
+  position: absolute;
+
+    top: 29em;
+    right: 27em;
+}
+
+
+.loader {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  animation: around 5.4s infinite;
+}
+
+@keyframes around {
+  0% {
+    transform: rotate(0deg)
+  }
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+.loader::after, .loader::before {
+  content: "";
+  background: white;
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border-width: 2px;
+  border-color: #333 #333 transparent transparent;
+  border-style: solid;
+  border-radius: 20px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  animation: around 0.7s ease-in-out infinite;
+}
+
+.loader::after {
+  animation: around 0.7s ease-in-out 0.1s infinite;
+  background: transparent;
 }

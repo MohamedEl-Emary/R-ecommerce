@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl:"https://recycleit-eco.herokuapp.com/eco/"
+  //baseUrl:"https://recycleit-eco.herokuapp.com/eco/"
+  baseUrl:"https://localhost:44350/eco/"
 };
 
 /*

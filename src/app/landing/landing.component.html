@@ -34,12 +34,12 @@
       <h2 class="position-relative d-inline-block">Top Selling</h2>
     </div>
     <div class="top-list row pb-5 mb-4">
-      <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 ">
+      <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 " *ngFor="let product of top">
         <!-- Card-->
         <div class="card rounded  border-0">
-          <div class="card-body p-4"><img src="https://bootstrapious.com/i/snippets/sn-cards/shoes-1_gthops.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
-            <h5> <a href="#" class="text-dark">Awesome product</a></h5>
-            <p class="small text-muted font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <div class="card-body p-4"><img src="{{product.picture}}" alt="" class="img-fluid d-block mx-auto mb-3">
+            <h5> <a href="/product/{{product.id}}" class="text-dark">{{product.name}}</a></h5>
+            <p class="small text-muted font-italic">{{product.description}}</p>
             <ul class="list-inline small">
               <li class="list-inline-item m-0"><i class="bi bi-star-fill"></i></li>
               <li class="list-inline-item m-0"><i class="bi bi-star-fill"></i></li>
@@ -48,92 +48,16 @@
               <li class="list-inline-item m-0"><i class="bi bi-star"></i></li>
             </ul>
             <div class="row ">
-              <h5 class="col-9 price font-weight-bold">EGP 99.00</h5>
-              <button class="btn col-2" href=""><i class="bi bi-bag-plus-fill"></i></button>
-            </div>
-            <div>
-              <button class="btn "><i class="fav bi fs-3" (click)="changeIcon()" 
-                [ngClass]="status ? 'bi-heart-fill': 'bi-heart'" ></i> </button>
-            </div>
+              <h5 class="col-9 price font-weight-bold">EGP {{product.price}}</h5>
+             </div>
+
           </div>
         </div>
       </div>
-  
-      <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-        <!-- Card-->
-        <div class="card rounded  border-0">
-          <div class="card-body p-4"><img src="https://bootstrapious.com/i/snippets/sn-cards/shoes-2_g4qame.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
-            <h5> <a href="#" class="text-dark">Awesome product</a></h5>
-            <p class="small text-muted font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <ul class="list-inline small">
-              <li class="list-inline-item m-0"><i class="bi bi-star-fill"></i></li>
-              <li class="list-inline-item m-0"><i class="bi bi-star-fill"></i></li>
-              <li class="list-inline-item m-0"><i class="bi bi-star-fill"></i></li>
-              <li class="list-inline-item m-0"><i class="bi bi-star"></i></li>
-              <li class="list-inline-item m-0"><i class="bi bi-star"></i></li>
-            </ul>
-            <div class="row ">
-              <h5 class="col-9 price font-weight-bold">EGP 99.00</h5>
-              <button class="btn col-2" href=""><i class="bi bi-bag-plus-fill"></i></button>
-            </div>
-            <div>
-              <button class="btn "><i class="fav bi fs-3" (click)="changeIcon()" 
-                [ngClass]="status ? 'bi-heart-fill': 'bi-heart'"></i> </button>
-            </div>
-          </div>
-        </div>
-      </div>
-  
-      <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-        <!-- Card-->
-        <div class="card rounded  border-0">
-          <div class="card-body p-4"><img src="https://bootstrapious.com/i/snippets/sn-cards/shoes-3_rk25rt.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
-            <h5> <a href="#" class="text-dark">Awesome product</a></h5>
-            <p class="small text-muted font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <ul class="list-inline small">
-              <li class="list-inline-item m-0"><i class="bi bi-star-fill"></i></li>
-              <li class="list-inline-item m-0"><i class="bi bi-star-fill"></i></li>
-              <li class="list-inline-item m-0"><i class="bi bi-star-fill"></i></li>
-              <li class="list-inline-item m-0"><i class="bi bi-star-fill"></i></li>
-              <li class="list-inline-item m-0"><i class="bi bi-star-fill"></i></li>
-            </ul>
-            <div class="row ">
-              <h5 class="col-9 price font-weight-bold">EGP 99.00</h5>
-              <button class="btn col-2" href=""><i class="bi bi-bag-plus-fill"></i></button>
-            </div>
-            <div>
-              <button class="btn "><i class="fav bi bi-heart fs-3"></i> </button>
-            </div>
-          </div>
-        </div>
-      </div>
-  
-      <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-        <!-- Card-->
-        <div class="card rounded  border-0">
-          <div class="card-body p-4"><img src="https://bootstrapious.com/i/snippets/sn-cards/shoes-4_vgfjy9.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
-            <h5> <a href="#" class="text-dark">Awesome product</a></h5>
-            <p class="small text-muted font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <ul class="list-inline small">
-              <li class="list-inline-item m-0"><i class="bi bi-star-fill"></i></li>
-              <li class="list-inline-item m-0"><i class="bi bi-star-fill"></i></li>
-              <li class="list-inline-item m-0"><i class="bi bi-star-fill"></i></li>
-              <li class="list-inline-item m-0"><i class="bi bi-star-fill"></i></li>
-              <li class="list-inline-item m-0"><i class="bi bi-star"></i></li>
-            </ul>
-            <div class="row ">
-              <h5 class="col-9 price font-weight-bold">EGP 99.00</h5>
-              <button class="btn col-2" href=""><i class="bi bi-bag-plus-fill"></i></button>
-            </div>
-            <div>
-              <button class="btn"><i class="fav bi bi-heart fs-3" onclick="changeIcon(this)"></i> </button>
-            </div>
-          </div>
-        </div>
-      </div>
+
+
     </div>
-  
-  
+
+
     </div>
   </section>
-  

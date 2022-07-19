@@ -1,0 +1,45 @@
+
+
+<body>
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-xl-9 mx-auto">
+          <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+            <div class="card-img-left d-none d-md-flex">
+            </div>
+            <div class="card-body p-4 p-sm-5">
+              <h5 class="card-title text-center mb-5 fw-light fs-3 headline"> <img class="icon" src="assets/img/logo.png" alt="">
+               Login</h5>
+
+              <form [formGroup]="form" (ngSubmit)="Submit()">
+
+
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="floatingInputEmail" placeholder="name@example.com" formControlName="email">
+                 </div>
+
+
+
+                <div class="form-floating mb-3">
+                  <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
+                 </div>
+
+
+                <div class="d-grid mb-2">
+                  <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase btnn" type="submit">  Login</button>
+                </div>
+                <hr class="my-4">
+
+
+                <a class="d-block text-center mt-2 large Have" href="/Register">Don't have account? Sign up</a>
+
+
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>

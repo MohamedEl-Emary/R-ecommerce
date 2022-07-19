@@ -18,27 +18,37 @@
                          <tbody>
                              <tr *ngFor="let item of products; let i = index">
                                  <td class="border-0 align-middle">{{i+1}}</td>
-                                 <td class="border-0 align-middle"><img class="img-fluid rounded shadow-sm" style="width: 100px;" src="{{item.image}}" alt=""></td>
-                                 <td class="border-0 align-middle">{{item.title}}</td>
+                                 <td class="border-0 align-middle"><img class="img-fluid rounded shadow-sm" style="width: 100px;" src="{{item.picture}}" alt=""></td>
+                                 <td class="border-0 align-middle">{{item.name}}</td>
                                  <td class="des border-0 align-middle">{{item.description}}</td>
                                  <td class="border-0 align-middle"><strong>{{item.price}}</strong></td>
                                  <td class="border-0 align-middle">{{item.quantity}}</td>
                                  <td class="border-0 align-middle"><button (click)="removeItem(item)" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button></td>
-         
+
                              </tr>
-                        
-                             
+
+
                          </tbody>
                      </table>
                      <div class="row mb-4 d-flex justify-content-end" style="gap:40px ;">
-		
+
 						<div class="col-sm-2">
 							<div class="form-group">
-    							<input style="height:35px ;" type="text" class="form-control p-0" id="promo" placeholder="Promo Code" required>
- 							</div>
+                <div *ngIf="code.pending && code.touched && code.dirty">
+                  <ng-container *ngTemplateOutlet="spinner;" style=" position: absolute;
+                  right: 10px;
+                  top: calc(40% - 30px);">
+                  </ng-container>
+                </div>
+                <div *ngIf="code.hasError('codeNotExists')">
+                  <p style="color:brown;">*Wrong Code!</p>
+                </div>
+                <input type="text" [formControl]="code" class="form-control border-0 gift-card" placeholder="discount code/gift card">
+
+  							</div>
 						</div>
 						<div class="col-sm-4">
-							<button class="btn btn-success"><i class="bi bi-percent"></i> Applay Now</button>
+							<button class="btn btn-success" (click)="applyPromo()"><i class="bi bi-percent"></i> Applay Now</button>
 						</div>
 					</div>
                      <div style="max-width: 80%;" class="row">
@@ -47,15 +57,15 @@
                                 <button routerLink="" class="btn btn-primary">Continue Shopping</button>
                                 <a routerLink="//checkout" class="btn btn-success">Check out</a>
                                 <strong>Total: EGP {{grandTotal}}</strong>
-                                
+
                             </div>
                      </div>
-                     
+
              </div>
          </div>
         </div>
      </ng-container>
-     
+
 </div>
 
 <ng-container *ngIf="products.length==0">
@@ -69,6 +79,11 @@
                 <button routerLink="" class="btnn btn btn-success">Start Shopping</button>
             </div>
         </div>
-      
+
     </div>
 </ng-container>
+<ng-template  #spinner>
+  <div class="control icon-container" >
+    <i class="loader"></i>
+ </div>
+</ng-template>

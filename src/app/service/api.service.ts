@@ -26,4 +26,7 @@ export class ApiService {
   getProductById(productId:number){
     return this.http.get<any>(environment.baseUrl+"Product/GetProductById?productId="+productId);
   }
+  getTopSelling(){
+    return this.http.get<any>(environment.baseUrl+"Product/MostPopularProduct");
+  }
 }
