@@ -13,6 +13,7 @@ import { FavListComponent } from './fav-list/fav-list.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
   ],

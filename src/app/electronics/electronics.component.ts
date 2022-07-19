@@ -23,13 +23,13 @@ export class ElectronicsComponent implements OnInit {
     this.api.getProduct()
     .subscribe(res=>{
       this.productList = res;
-
+           console.log(res);
       this.productList.forEach((a:any)=>{
         Object.assign(a,{quantity:1,total:a.price});
       });
     })
 
-    
+
   }
   addtocart(item:any){
     this.cartService.addtoCart(item);
@@ -44,7 +44,7 @@ export class ElectronicsComponent implements OnInit {
   }
   changeIcon(){
     this.status = !this.status;
-     
+
   }
 
 }
