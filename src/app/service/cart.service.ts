@@ -21,15 +21,21 @@ export class CartService {
     this.productList.next(product);
   }
   addtoCart(product:any){
-    console.log(product)
-    this.cartItemList.push(product);
-    this.productList.next(this.cartItemList);
-    this.getTotalPrice();
+    console.log(product);
+    if(product.qty+1 >product.quantity){
+      alert('Product limit Exceed')
+    }else{
+
+      console.log(product)
+      this.cartItemList.push(product);
+      this.productList.next(this.cartItemList);
+      this.getTotalPrice();
+    }
   }
   getTotalPrice():number{
     let grandTotal = 0;
     this.cartItemList.map((a:any)=>{
-      grandTotal +=  a.quantity*(a.price-(a.price*(a.discount/100)));
+      grandTotal +=  a.qty*(a.price-(a.price*(a.discount/100)));
     })
     return grandTotal;
   }
@@ -60,4 +66,14 @@ getDiscount(){
   checkOut(OrderModel:Cart){
     return this.http.post(environment.baseUrl+"User/CheckOut",OrderModel);
   }
+  incrementQty(product:any){
+    this.productList.forEach(item=>{
+      if(item.id == product.id)
+      {
+        item.qty = product.qty
+      }
+    });
+    console.log(this.productList);
+  }
+
 }

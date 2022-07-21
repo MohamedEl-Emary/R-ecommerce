@@ -28,7 +28,7 @@ export class ElectronicsComponent implements OnInit {
       this.productList = res;
            console.log(res);
       this.productList.forEach((a:any)=>{
-        Object.assign(a,{quantity:1,total:a.price});
+        Object.assign(a,{qty:1,total:a.price});
       });
      if(await this.authService.isAuthenticated())
 {

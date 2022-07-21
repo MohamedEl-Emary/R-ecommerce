@@ -18,6 +18,7 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import {  FormsModule,ReactiveFormsModule } from '@angular/forms';
 
+
 @NgModule({
   imports: [
     BrowserModule,

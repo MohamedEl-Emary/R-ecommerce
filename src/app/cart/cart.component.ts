@@ -12,18 +12,23 @@ export class CartComponent implements OnInit ,AfterViewInit{
   public products:any=[];
   public grandTotal:number=0;
   constructor(private cartService : CartService) { }
+  qty = new FormControl(1,{
+validators:Validators.min(1)
+  },)
   code=new FormControl(null,{
     validators:Validators.min(1),
     updateOn:'blur'
     },)
     ngAfterViewInit(): void {
       this.code.setAsyncValidators(validateCode());
+
    }
   ngOnInit(): void {
     this.cartService.getProducts()
     .subscribe(res=>{
       console.log(res);
       this.products = res;
+      console.log(res);
       this.grandTotal = this.cartService.getTotalPrice();
       this.cartService.setTotalPrice(this.grandTotal);
     })
@@ -44,5 +49,29 @@ export class CartComponent implements OnInit ,AfterViewInit{
        this.cartService.setTotalPrice(this.grandTotal);
     this.cartService.setDiscount(this.code.value);
       }
+  }
+  incr(item:any){
+    console.log(item)
+    if(item.qty +1 >item.quantity){
+      alert('Product limit Exceed')
+    }else{
+      item.qty++;
+      this.cartService.incrementQty(item)
+      this.grandTotal = this.cartService.getTotalPrice();
+      this.cartService.setTotalPrice(this.grandTotal);
+    }
+  }
+  decr(item:any){
+    console.log(item);
+
+    if(item.qty -1 >0){
+
+      item.qty=Number(item.qty)-1;
+      this.cartService.incrementQty(item)
+      this.grandTotal = this.cartService.getTotalPrice();
+      this.cartService.setTotalPrice(this.grandTotal);
+    }
+
+
   }
 }

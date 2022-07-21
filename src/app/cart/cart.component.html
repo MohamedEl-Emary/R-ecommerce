@@ -22,8 +22,9 @@
                                  <td class="border-0 align-middle">{{item.name}}</td>
                                  <td class="des border-0 align-middle">{{item.description}}</td>
                                  <td class="border-0 align-middle"><strong>{{item.price}}</strong></td>
-                                 <td class="border-0 align-middle"><input style="max-width:70px ;"
-                                     type="number" class="form-control form-control-lg text-center" value="{{item.quantity}}">
+                                 <td class="border-0 align-middle qty-container">
+                                  <i class="bi bi-plus-circle-fill incr" (click)="incr(item)"></i> <p>{{item.qty}}</p><i class="bi bi-dash-circle-fill decr" (click)="decr(item)"></i>
+
                                     </td>
                                  <td class="border-0 align-middle"><button (click)="removeItem(item)" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button></td>
 
