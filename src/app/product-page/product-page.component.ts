@@ -24,7 +24,10 @@ export class ProductPageComponent implements OnInit {
 this.apiService.getProductById(this.productId).subscribe(res=>{
   this.product = res;
   this.apiService.getComments(this.productId).subscribe(res=>{
-    this.comments = res;});
+
+    this.comments = res;
+    console.log(this.comments);
+  });
  });
 
 
@@ -34,8 +37,17 @@ this.apiService.getProductById(this.productId).subscribe(res=>{
       console.log('post')
       if(!this.comment.valid){
          console.log(this.comment.hasError)
+      }else{
+          let c = {id:0,userName:'',PhotoUrl:'',userId:'',productId:this.productId,comment:this.comment.value};
+          console.log(c);
+        this.apiService.postComment(c).subscribe(e=>{
+          if(e != -1){
+            console.log(e);
+            c.id = e as number;
+            this.comments.push(c)
+          }
+        });
       }
-      this.apiService.postComment(this.comment.value);
 
     }
 

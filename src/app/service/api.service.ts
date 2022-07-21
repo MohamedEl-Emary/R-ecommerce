@@ -19,9 +19,7 @@ export class ApiService {
     return this.http.get<any>(environment.baseUrl+"Product/GetProductComments?productId="+id);
   }
   postComment(comment:any){
-    this.http.post(environment.baseUrl+"User/Comment",comment).subscribe(res=>{
-
-    });
+    return this.http.post(environment.baseUrl+"User/Comment",comment);
   }
   getProductById(productId:number){
     return this.http.get<any>(environment.baseUrl+"Product/GetProductById?productId="+productId);
