@@ -19,22 +19,22 @@
                          <tbody>
                              <tr *ngFor="let item of products; let i = index">
                                  <td class="border-0 align-middle">{{i+1}}</td>
-                                 <td class="border-0 align-middle"><img class="img-fluid rounded shadow-sm" style="width: 100px;" src="{{item.image}}" alt=""></td>
-                                 <td class="border-0 align-middle">{{item.title}}</td>
-                                 <td class="des border-0 align-middle">{{item.description}}</td>
-                                 <td class="border-0 align-middle"><strong>{{item.price}}</strong></td>
-                                 <td class="border-0 align-middle"><button (click)=removeItem(item) class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button> </td>
-                                 <td class="border-0 align-middle"> <button (click)=addtocart(item) class="btn btn-outline-success" ><i class="bi bi-bag-plus-fill"></i></button></td>   
+                                 <td class="border-0 align-middle"><img class="img-fluid rounded shadow-sm" style="width: 100px;" src="{{item.product.picture}}" alt=""></td>
+                                 <td class="border-0 align-middle">{{item.product.name}}</td>
+                                 <td class="des border-0 align-middle">{{item.product.description}}</td>
+                                 <td class="border-0 align-middle"><strong>{{item.product.price}}</strong></td>
+                                 <td class="border-0 align-middle"><button (click)=removeItem(item.product) class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button> </td>
+                                 <td class="border-0 align-middle"> <button (click)=addtocart(item.product) class="btn btn-outline-success" ><i class="bi bi-bag-plus-fill"></i></button></td>
                              </tr>
-                        
+
                          </tbody>
                      </table>
-                     
+
              </div>
          </div>
         </div>
      </ng-container>
-     
+
 </div>
 
 <ng-container *ngIf="products.length==0">
@@ -48,6 +48,6 @@
                 <button routerLink="" class="btnn btn btn-danger">Start Shopping</button>
             </div>
         </div>
-      
+
     </div>
 </ng-container>

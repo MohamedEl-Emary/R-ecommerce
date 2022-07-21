@@ -15,20 +15,22 @@ export class FavListComponent implements OnInit {
   constructor(private favListService : FavListService, private cartService : CartService) { }
 
   ngOnInit(): void {
-    this.favListService.getProducts()
+    this.favListService.getFavorite()
     .subscribe(res=>{
       this.products = res;
+      console.log(res);
       this.productList.forEach((a:any)=>{
         Object.assign(a,{quantity:1,total:a.price});
       });
     })
-    
+
   }
   addtocart(item:any){
     this.cartService.addtoCart(item);
 
   }
   removeItem(item:any){
+
     this.favListService.removeFavItem(item);
   }
 

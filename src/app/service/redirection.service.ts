@@ -9,10 +9,15 @@ import { Observable } from 'rxjs';
 })
 export class RedirectionService implements CanActivate {
 
+
   constructor(private activeRoute:Router,private userService:AuthServiceService) { }
   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
+    console.log(route.routeConfig?.path)
     let check = await this.userService.isAuthenticated();
-console.log(check);
+    if(route.routeConfig?.path == "Fav-list"&&check){
+      return true;
+    }
+    console.log(check);
     if(check){
      this.activeRoute.navigate(['']);
      return false;
@@ -20,4 +25,5 @@ console.log(check);
       return true;
     }
   }
+
 }

@@ -1,3 +1,4 @@
+import { AuthServiceService } from './../service/auth-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../service/api.service';
@@ -13,20 +14,27 @@ export class ElectronicsComponent implements OnInit {
 
   status:boolean = false;
   public productList : any;
+  isAuthenticated=false;
   constructor(
     private api : ApiService,
     private cartService : CartService,
     private favListService : FavListService,
-    private router:Router
+    private router:Router,
+    private authService:AuthServiceService
       ) { }
-  ngOnInit(): void {
+  async ngOnInit() {
     this.api.getProduct()
-    .subscribe(res=>{
+    .subscribe(async res=>{
       this.productList = res;
            console.log(res);
       this.productList.forEach((a:any)=>{
         Object.assign(a,{quantity:1,total:a.price});
       });
+     if(await this.authService.isAuthenticated())
+{
+this.isAuthenticated = true;
+
+      }
     })
 
 
@@ -36,8 +44,8 @@ export class ElectronicsComponent implements OnInit {
 
   }
   addtocfav(item:any){
-    this.favListService.addtoFav(item);
-
+    this.favListService.addFavorite(item);
+     console.log({productId:item.id})
   }
   public gotoProduct(url:any,id:any){
     this.router.navigate([url,id]);

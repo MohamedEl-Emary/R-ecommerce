@@ -1,7 +1,8 @@
+import { AuthServiceService } from './service/auth-service.service';
 import { RedirectionService } from './service/redirection.service';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ElectronicsComponent } from './electronics/electronics.component';
@@ -15,7 +16,7 @@ const routes: Routes = [
   {path:'login',component:LoginComponent,canActivate:[RedirectionService]},
   {path:'Electronics',component:ElectronicsComponent},
   {path:'Cart',component:CartComponent},
-  {path:'Fav-list',component:FavListComponent},
+  {path:'Fav-list',component:FavListComponent,canActivate:[RedirectionService]},
   {path:'Product-Form',component:ProductFormComponent},
   {path:'product/:id',component:ProductPageComponent},
   {path:'checkout',component:CheckoutComponent}
