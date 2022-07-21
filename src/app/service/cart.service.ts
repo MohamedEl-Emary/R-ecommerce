@@ -21,12 +21,18 @@ export class CartService {
     this.productList.next(product);
   }
   addtoCart(product:any){
-    console.log(product);
+
+    let isFound = false;
+     this.cartItemList.forEach((e: { id: any; }) => {
+      if(e.id == product.id)
+      isFound = true;
+
+     });
+     if(!isFound)
     if(product.qty+1 >product.quantity){
       alert('Product limit Exceed')
     }else{
 
-      console.log(product)
       this.cartItemList.push(product);
       this.productList.next(this.cartItemList);
       this.getTotalPrice();

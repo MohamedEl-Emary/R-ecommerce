@@ -40,6 +40,7 @@ this.isAuthenticated = true;
 
   }
   addtocart(item:any){
+
     this.cartService.addtoCart(item);
 
   }

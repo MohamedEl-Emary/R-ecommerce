@@ -1,4 +1,6 @@
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { of } from 'rxjs';
 import { ApiService } from '../service/api.service';
 import { CartService } from '../service/cart.service';
 import { FavListService } from '../service/fav-list.service';
@@ -20,7 +22,7 @@ export class FavListComponent implements OnInit {
       this.products = res;
       console.log(res);
       this.productList.forEach((a:any)=>{
-        Object.assign(a,{quantity:1,total:a.price});
+        Object.assign(a,{qty:1,total:a.price});
       });
     })
 
@@ -31,7 +33,20 @@ export class FavListComponent implements OnInit {
   }
   removeItem(item:any){
 
-    this.favListService.removeFavItem(item);
+  for (let index = 0; index <  this.products.length; index++) {
+     if(this.products[index].productId==item.id){
+      console.log(this.products[index].productId);
+      this.favListService.removeFromFavorite(this.products[index].id).subscribe(e=>{
+          if(e == true){
+            this.products.splice(index,1);
+          }else{
+            alert("Can't Remove")
+          }
+
+   });
+      break;
+    }
+  }
   }
 
 }

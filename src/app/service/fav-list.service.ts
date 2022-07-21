@@ -22,9 +22,7 @@ export class FavListService {
     this.productList.next(this.favItemList);
 
   }
-  removeFavItem(product:any){
 
-  }
   addFavorite(product:any){
     this.http.post(environment.baseUrl+'User/AddToFavorite',{productId:product.id}).subscribe(res=>{
       let convert = res as (HttpErrorResponse);
@@ -39,5 +37,7 @@ export class FavListService {
   getFavorite(){
     return this.http.get(environment.baseUrl+'User/GetMyFavorites');
   }
-
+removeFromFavorite(item:any){
+ return this.http.delete(environment.baseUrl+"User/RemoveFavorite?id="+item);
+}
 }
