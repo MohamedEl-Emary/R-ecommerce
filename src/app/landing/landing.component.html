@@ -37,7 +37,7 @@
       <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 " *ngFor="let product of top">
         <!-- Card-->
         <div class="card rounded  border-0">
-          <div class="card-body p-4"><img src="{{product.picture}}" alt="" class="img-fluid d-block mx-auto mb-3">
+          <div class="card-body p-4"><img src="{{product.picture}}" style="width:200px ; height:200px ;" alt="" class="img-fluid d-block mx-auto mb-3">
             <h5> <a href="/product/{{product.id}}" class="text-dark">{{product.name}}</a></h5>
             <p class="small text-muted font-italic">{{product.description}}</p>
             <ul class="list-inline small">
