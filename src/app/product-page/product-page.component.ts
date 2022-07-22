@@ -15,14 +15,21 @@ export class ProductPageComponent implements OnInit {
   comments!:Array<any>
    comment = new FormControl('',{validators:Validators.minLength(1)});
    product:any;
-  constructor(private favListService:FavListService,private api:ApiService,private route:ActivatedRoute,private apiService:ApiService,private cartService:CartService) { }
+   token = localStorage.getItem("token");
+   profile = localStorage.getItem("profile")==null?null:JSON.parse(localStorage.getItem("profile")!.toString());
+  defaultImg = "../../assets/img/logo.png"
+   constructor(private favListService:FavListService,private api:ApiService,private route:ActivatedRoute,private apiService:ApiService,private cartService:CartService) {
+
+    this.comments = [];
+    }
 
   ngOnInit(): void {
     this.productId = this.route.snapshot.paramMap.get('id');
-
+console.log(this.profile)
 
 
 this.apiService.getProductById(this.productId).subscribe(res=>{
+
 
   this.product = res;
   this.product.qty=1;
@@ -43,12 +50,14 @@ this.apiService.getProductById(this.productId).subscribe(res=>{
       if(!this.comment.valid){
          console.log(this.comment.hasError)
       }else{
-          let c = {id:0,userName:'',PhotoUrl:'',userId:'',productId:this.productId,comment:this.comment.value};
+          let c = {id:0,userName:'',photoUrl:'',userId:'',productId:this.productId,comment:this.comment.value};
           console.log(c);
         this.apiService.postComment(c).subscribe(e=>{
           if(e != -1){
             console.log(e);
             c.id = e as number;
+            c.photoUrl = this.profile.photoUrl;
+            c.userName = this.profile.name;
             this.comments.push(c)
           }
         });

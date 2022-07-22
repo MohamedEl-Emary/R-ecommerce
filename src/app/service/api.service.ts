@@ -27,5 +27,8 @@ export class ApiService {
   getTopSelling(){
     return this.http.get<any>(environment.baseUrl+"Product/MostPopularProduct");
   }
+  getMyProfile(){
+    return this.http.get(environment.secondUrl+"User/GetUserProfile");
+  }
 
 }

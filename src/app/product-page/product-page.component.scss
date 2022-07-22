@@ -33,7 +33,7 @@ body {
 }
 
 .card {
-    
+
     border: none;
     box-shadow: 5px 6px 6px 2px #e9ecef;
     border-radius: 4px;
@@ -98,3 +98,17 @@ body {
     top: 50%;
     transform: translateY(-50%);
 }
+
+
+span.edit {
+  float: left;
+  position: absolute;
+  left: 47em;
+
+}
+
+span.delete {
+  float: left;
+  position: absolute;
+  left: 43em;
+ }

@@ -1,3 +1,4 @@
+import { ApiService } from './../service/api.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
     password:['',Validators.required]
 
   });
-  constructor(private Auth:AuthServiceService,private fb:FormBuilder,private route:Router) {
+  constructor(private api:ApiService,private Auth:AuthServiceService,private fb:FormBuilder,private route:Router) {
 
 
 
@@ -32,6 +33,9 @@ export class LoginComponent implements OnInit {
 Submit(){
   this.Auth.Login(this.form.value).subscribe(data=>{
     localStorage.setItem("token",data as string);
+    this.api.getMyProfile().subscribe(res=>{
+      localStorage.setItem("profile",JSON.stringify(res));
+    })
     console.log(localStorage.getItem("token"));
     this.route.navigate(['']);
   });
