@@ -21,8 +21,8 @@
                             <p class="about">{{product.description}}
                             </p>
                             <div class="col-12 d-flex justify-content-between">
-                              <button (click)=addtocart(product)  class="btn btn-success" href=""><i class="bi bi-bag-plus-fill" ></i> Add to Cart</button>
-                              <button class="btn btn-danger "><i class="bi bi-heart"></i> Add to Favorites</button>
+                              <button *ngIf="product.quantity >0" (click)=addtocart(product)  class="btn btn-success" href=""><i class="bi bi-bag-plus-fill" ></i> Add to Cart</button>
+                              <button (click)="addToFavorite(product)" class="btn btn-danger "><i class="bi bi-heart"></i> Add to Favorites</button>
                               </div>
                         </div>
                     </div>
@@ -54,9 +54,9 @@
 
                     <div class="reply px-4">
                         <small style="color:#6c6c6c ;">3 Days ago</small>
-                       
+
                     </div>
-                      
+
                   </div>
                 </div>
 
