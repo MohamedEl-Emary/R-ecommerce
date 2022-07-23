@@ -20,6 +20,16 @@
                             </div>
                             <p class="about">{{product.description}}
                             </p>
+                            <div class="col-12 d-flex" >
+                                <h3 style="margin-right:20px ;">Rate this Product</h3>
+                                <div class="row d-flex"  *ngFor="let star of stars">
+                                    <app-star [starId]="star" [rating]="hoverState || rating" (enter)="enter($event)" (leave)="leave($event)"
+                                    (bigClick)="updateRating(star)">
+                                    </app-star>
+                                </div>
+                             </div>  
+                            <div class="row">
+                                                         
                             <div class="col-12 d-flex justify-content-between">
                               <button *ngIf="product.quantity >0" (click)=addtocart(product)  class="btn btn-success" href=""><i class="bi bi-bag-plus-fill" ></i> Add to Cart</button>
                               <button (click)="addToFavorite(product)" class="btn btn-danger "><i class="bi bi-heart"></i> Add to Favorites</button>

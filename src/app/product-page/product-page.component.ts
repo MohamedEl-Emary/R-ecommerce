@@ -11,6 +11,22 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./product-page.component.scss']
 })
 export class ProductPageComponent implements OnInit {
+  stars = [1, 2, 3, 4, 5];
+  rating = 0;
+  hoverState = 0;
+
+  enter(i: number) {
+    this.hoverState = i;
+  }
+
+  leave(i: number) {
+    this.hoverState = 0;
+  }
+
+  updateRating(i: number) {
+    this.rating = i;
+  }
+
   productId:any ='';
   comments!:Array<any>
    comment = new FormControl('',{validators:Validators.minLength(1)});

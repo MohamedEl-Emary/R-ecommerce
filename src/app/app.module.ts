@@ -17,6 +17,7 @@ import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import {  FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { StarComponent } from './star/star.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {  FormsModule,ReactiveFormsModule } from '@angular/forms';
     ProductFormComponent,
     ProductPageComponent,
     CheckoutComponent,
-    LoginComponent
+    LoginComponent,
+    StarComponent
   ]
   ,
   providers: [{
