@@ -23,7 +23,7 @@
                                  <td class="des border-0 align-middle">{{item.description}}</td>
                                  <td class="border-0 align-middle"><strong>{{item.price}}</strong></td>
                                  <td class="border-0 align-middle qty-container" style="display:flex; flex-direction:row ; justify-content:start ; margin-top: 10px; gap:10px;">
-                                  <i class="bi bi-plus-circle-fill incr" (click)="incr(item)"></i><p>{{item.qty}}</p><i class="bi bi-dash-circle-fill decr" (click)="decr(item)"></i>
+                                    <i class="bi bi-dash-circle-fill decr" (click)="decr(item)"></i><p>{{item.qty}}</p><i class="bi bi-plus-circle-fill incr" (click)="incr(item)"></i>
 
                                     </td>
                                  <td class="border-0 align-middle"><button (click)="removeItem(item)" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button></td>
