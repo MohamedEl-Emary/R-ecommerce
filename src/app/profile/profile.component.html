@@ -1,0 +1,71 @@
+<header style="margin-top:-80px ;">
+	<div class="container">
+		<div class="profile">
+			<div class="profile-image">
+				<img src="https://placebear.com/200/300" alt="" style="width: 200px;height:200px;">
+			</div>
+			<div class="profile-user-settings">
+				<h1 class="profile-user-name">User Name</h1>
+				<button class="btn profile-edit-btn"  data-bs-target="#exampleModal" data-bs-toggle="modal">Edit Profile</button>
+			</div>
+      
+			<div class="profile-stats">
+
+				<ul>
+					<li><span class="profile-stat-count">0</span> L.E</li>
+					<li><span class="profile-stat-count">0</span> Orders</li>
+				</ul>
+<br>
+			</div>
+			<div class="profile-bio">
+                <h2 class="head1">User's Information</h2>
+				<p><span class="profile-real-name">Email Address:</span> Email@example.com</p>
+                <p><span class="profile-real-name">Address:</span> Address</p>
+                <p><span class="profile-real-name">PhoneNumber:</span> 01111111111</p>
+                
+			</div>
+      <button type="button" class="btn btn-lg btn-primary btn-login fw-bold text-uppercase btnn">
+        <span class="btn"></span> Log out <i class="bi bi-box-arrow-in-right"></i>
+      </button>
+
+		</div>
+		<!-- End of profile section -->
+
+	</div>
+	<!-- End of container -->
+
+</header>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel" >Edit Profile Information</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+          
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Address:</label>
+              <input type="text" class="form-control" id="recipient-name"  name="address">
+            </div>
+            <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">PhoneNumber:</label>
+                <input type="text" class="form-control" id="recipient-name"   name="phoneNumber">
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">PhotoUrl:</label>
+                <input type="text" class="form-control" id="recipient-name"   name="PhotoUrl">
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-primary" 
+           style="padding:5px;
+            background-color:rgb(87, 87, 182);
+            color:white">
+            Update</button>
+        </div>
+      </div>
+    </div>
+  </div>

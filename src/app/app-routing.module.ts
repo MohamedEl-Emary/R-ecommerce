@@ -10,6 +10,7 @@ import { FavListComponent } from './fav-list/fav-list.component';
 import { LandingComponent } from './landing/landing.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductPageComponent } from './product-page/product-page.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'Fav-list',component:FavListComponent,canActivate:[RedirectionService]},
   {path:'Product-Form',component:ProductFormComponent},
   {path:'product/:id',component:ProductPageComponent},
-  {path:'checkout',component:CheckoutComponent}
+  {path:'checkout',component:CheckoutComponent},
+  {path:'profile',component:ProfileComponent},
 ];
 
 @NgModule({
