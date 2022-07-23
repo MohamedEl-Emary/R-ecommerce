@@ -44,4 +44,11 @@ export class ApiService {
   rate(rate:any){
     return this.http.post(environment.baseUrl+"User/Rate",rate);
   }
+  getMyProducts(){
+    return this.http.get(environment.baseUrl+"User/GetMyProducts");
+  }
+  updateProduct(product:any){
+return this.http.post(environment.baseUrl+"Product/EditProduct",product);
+
+  }
 }

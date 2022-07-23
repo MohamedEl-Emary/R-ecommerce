@@ -88,7 +88,7 @@ getCustomDate(Date:Date){
       if(!this.comment.valid){
          console.log(this.comment.hasError)
       }else{
-          let c = {id:0,userName:'',photoUrl:'',userId:'',productId:this.productId,comment:this.comment.value};
+          let c = {id:0,userName:'',photoUrl:'',userId:this.profile.userId,productId:this.productId,comment:this.comment.value};
           console.log(c);
         this.apiService.postComment(c).subscribe(e=>{
           if(e != -1){

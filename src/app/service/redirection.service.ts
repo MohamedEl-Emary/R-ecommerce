@@ -12,7 +12,6 @@ export class RedirectionService implements CanActivate {
 
   constructor(private activeRoute:Router,private userService:AuthServiceService) { }
   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
-    console.log(route.routeConfig?.path)
     let check = await this.userService.isAuthenticated();
     if(route.routeConfig?.path == "Fav-list"&&check){
       return true;
@@ -21,6 +20,12 @@ export class RedirectionService implements CanActivate {
       return true;
     }else if(route.routeConfig?.path == "profile"&&!check){
       this.activeRoute.navigate(['login']);
+    }
+    if(route.routeConfig?.path == "Product-Form"&&check && this.userService.getProfile().role=="hyperVisor"){
+
+      return true;
+    }else if(route.routeConfig?.path == "Product-form"&&!check){
+      this.activeRoute.navigate(['']);
     }
     console.log(check);
     if(check){

@@ -18,7 +18,7 @@ const routes: Routes = [
   {path:'Electronics',component:ElectronicsComponent},
   {path:'Cart',component:CartComponent},
   {path:'Fav-list',component:FavListComponent,canActivate:[RedirectionService]},
-  {path:'Product-Form',component:ProductFormComponent},
+  {path:'Product-Form',component:ProductFormComponent,canActivate:[RedirectionService]},
   {path:'product/:id',component:ProductPageComponent},
   {path:'checkout',component:CheckoutComponent},
   {path:'profile',component:ProfileComponent,canActivate:[RedirectionService]},

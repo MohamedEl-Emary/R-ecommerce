@@ -21,27 +21,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="border-0 align-middle">1</td>
-                            <td class="border-0 align-middle"><img class="img-fluid rounded shadow-sm" style="width: 100px;" src="..." alt=""></td>
-                            <td class="border-0 align-middle">Title1</td>
-                            <td class="des border-0 align-middle">description1</td>
-                            <td class="border-0 align-middle"><strong>price</strong></td>
-                            <td class="border-0 align-middle">1</td>
+                        <tr *ngFor="let product of products;let i= index">
+                            <td class="border-0 align-middle">{{i+1}}</td>
+                            <td class="border-0 align-middle"><img class="img-fluid rounded shadow-sm" style="width: 100px;" src="{{product.picture}}" alt=""></td>
+                            <td class="border-0 align-middle">{{product.name}}</td>
+                            <td class="des border-0 align-middle">{{product.description}}</td>
+                            <td class="border-0 align-middle"><strong>{{product.price}}</strong></td>
+                            <td class="border-0 align-middle">{{product.quantity}}</td>
                             <td class="border-0 align-middle"><button  class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button></td>
-                            <td class="border-0 align-middle"><button  class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editProduct"><i class="bi bi-pen-fill"></i></button></td>
+                            <td  class="border-0 align-middle"><button (click)="edit(product)"  class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editProduct"><i class="bi bi-pen-fill"></i></button></td>
                         </tr>
-               
-                    
+
+
                     </tbody>
                 </table>
-                
+
         </div>
    </div>
 </div>
 
   <!-- Modal new Product -->
-  <div class="modal fade" id="newProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="editProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -49,52 +49,90 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form>
+            <form [formGroup]="editForm">
                 <div class="form-group">
-                    <label  label for="exampleInputEmail1">Product Name</label>
-                    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter product name">
+                  <div class="err alert alert-danger" *ngIf="editForm.controls['name'].errors?.['required'] && editForm.controls['name'].touched && editForm.controls['name'].dirty">
+                    Name Is Required
+                  </div>
+
+                  <div class="err alert alert-danger" *ngIf="editForm.controls['name'].errors?.['minlength'] && editForm.controls['name'].touched && editForm.controls['name'].dirty">
+                    Minimum Length is 4
+                  </div>
+                    <label  label for="exampleInputEmail1">Name</label>
+                    <input formControlName="name" [(ngModel)]="editModel.name" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter product name">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Description</label>
-                    <textarea class="form-control" id="Description" placeholder="Enter description"></textarea>
+                    <textarea formControlName="description" [(ngModel)]="editModel.description" class="form-control" id="Description" placeholder="Enter description"></textarea>
                 </div>
                 <div class="form-group">
+                  <div class="err alert alert-danger" *ngIf="editForm.controls['price'].errors?.['required'] && editForm.controls['price'].touched && editForm.controls['price'].dirty">
+                    Price Is Required
+                  </div>
+
+                  <div class="err alert alert-danger" *ngIf="editForm.controls['price'].errors?.['min'] && editForm.controls['price'].touched && editForm.controls['price'].dirty">
+                    Minimum Price is 1 L.E
+                  </div>
                     <label for="exampleInputPassword1">Price</label>
-                    <input type="text" class="form-control" id="price" placeholder="Enter price EGP">
+                    <input min="1" formControlName="price" [(ngModel)]="editModel.price" type="number" class="form-control" id="price" placeholder="Enter price EGP">
                 </div>
                 <div class="form-group">
+                  <div class="err alert alert-danger" *ngIf="editForm.controls['discount'].errors?.['required'] && editForm.controls['discount'].touched && editForm.controls['discount'].dirty">
+                    Discount Is Required
+                  </div>
+
+                  <div class="err alert alert-danger" *ngIf="editForm.controls['discount'].errors?.['min'] && editForm.controls['discount'].touched && editForm.controls['discount'].dirty">
+                    Minimum Discount is 0 %
+                  </div>
                     <label for="exampleInputPassword1">Discount</label>
-                    <input type="number" class="form-control" id="discount" placeholder="Enter Discount%">
+                    <input formControlName="discount" [(ngModel)]="editModel.discount" type="number" class="form-control" id="discount" placeholder="Enter Discount%">
                 </div>
                 <div class="form-group">
+                  <div class="err alert alert-danger" *ngIf="editForm.controls['quantity'].errors?.['required'] && editForm.controls['quantity'].touched && editForm.controls['quantity'].dirty">
+                    Quantity Is Required
+                  </div>
+
+                  <div class="err alert alert-danger" *ngIf="editForm.controls['quantity'].errors?.['min'] && editForm.controls['quantity'].touched && editForm.controls['quantity'].dirty">
+                    Minimum Quantity is 1 unit
+                  </div>
                     <label for="exampleInputPassword1">Quantity</label>
-                    <input type="number" class="form-control" id="exampleInputPassword1" placeholder="0">
+                    <input formControlName="quantity" [(ngModel)]="editModel.quantity" type="number" class="form-control" id="exampleInputPassword1" placeholder="0">
                 </div>
                 <div class="form-group">
+
+
                     <label for="exampleInputPassword1">Categories</label>
-                    <select class="form-select"  name="categories" id="categories">
-                        <option disabled selected value [selected]="true"> -- Select Category -- </option>
-                        <option value="0">Electronics</option>  
-                        <option value="1">Fashion</option>  
-                        <option value="2">Home & Office</option>  
-                        <option value="3">Furnitures</option> 
+
+                    <select  formControlName="catergory" [(ngModel)]="editModel.category"class="form-select"  name="categories" id="categories">
+                        <option disabled selected value > -- Select Category -- </option>
+
+                        <option value="0">Health</option>
+                        <option value="1">Home</option>
+                        <option value="2">Sporting</option>
+                        <option value="3">Children</option>
+                        <option value="4">Style</option>
+                        <option value="5">Other</option>
                     </select>
                 </div>
                 <div class="form-group">
+                  <div class="err alert alert-danger" *ngIf="editForm.controls['picture'].errors?.['required'] && editForm.controls['picture'].touched && editForm.controls['picture'].dirty">
+                    Picture Is Required
+                  </div>
                     <label for="exampleInputPassword1">Image URL</label>
-                    <input type="text" class="form-control" id="exampleInput1" placeholder="Enter Image URL">
+                    <input formControlName="picture"  [ngModel]="editModel.picture" type="text" class="form-control" id="exampleInput1" placeholder="Enter Image URL">
                 </div>
+
             </form>
         </div>
         <div class="modal-footer d-flex justify-content-between">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-success"><i class="bi bi-plus-lg"></i> Add</button>
+          <button (click)="update()"  type="button" class="btn btn-success"><i class="bi bi-plus-lg"></i> Update</button>
         </div>
       </div>
     </div>
   </div>
    <!-- Modal Edit Product -->
-   <div class="modal fade" id="editProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal fade" id="newProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -127,10 +165,10 @@
                     <label for="exampleInputPassword1">Categories</label>
                     <select class="form-select"  name="categories" id="categories">
                         <option disabled selected value [selected]="true"> -- Select Category -- </option>
-                        <option value="0">Electronics</option>  
-                        <option value="1">Fashion</option>  
-                        <option value="2">Home & Office</option>  
-                        <option value="3">Furnitures</option> 
+                        <option value="0">Electronics</option>
+                        <option value="1">Fashion</option>
+                        <option value="2">Home & Office</option>
+                        <option value="3">Furnitures</option>
                     </select>
                 </div>
                 <div class="form-group">

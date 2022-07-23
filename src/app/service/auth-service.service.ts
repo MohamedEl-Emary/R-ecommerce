@@ -23,4 +23,7 @@ export class AuthServiceService {
   Login(data:any):Observable<any>{
     return this.http.post<any>(environment.baseUrl+"User/Login",data);
   }
+  getProfile(){
+   return localStorage.getItem("profile")==null?null:JSON.parse(localStorage.getItem("profile")!.toString());
+  }
 }
