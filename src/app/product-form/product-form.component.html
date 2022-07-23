@@ -2,7 +2,7 @@
     <div class="card-table">
         <div class="card-table-header d-flex justify-content-between py-3">
             <h2>Product Form</h2>
-            <button type="button" class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#newProduct"><i class="bi bi-plus-lg"></i> Add new product</button>
+            <button  type="button" class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#newProduct"><i class="bi bi-plus-lg"></i> Add new product</button>
         </div>
 
         <div class="table-responsive">
@@ -28,7 +28,7 @@
                             <td class="des border-0 align-middle">{{product.description}}</td>
                             <td class="border-0 align-middle"><strong>{{product.price}}</strong></td>
                             <td class="border-0 align-middle">{{product.quantity}}</td>
-                            <td class="border-0 align-middle"><button  class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button></td>
+                            <td class="border-0 align-middle"><button  (click)="delete(product)" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button></td>
                             <td  class="border-0 align-middle"><button (click)="edit(product)"  class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editProduct"><i class="bi bi-pen-fill"></i></button></td>
                         </tr>
 
@@ -45,7 +45,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add new Product</h5>
+          <h5 class="modal-title" id="exampleModalLabel">EditProduct</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -103,15 +103,15 @@
 
                     <label for="exampleInputPassword1">Categories</label>
 
-                    <select  formControlName="catergory" [(ngModel)]="editModel.category"class="form-select"  name="categories" id="categories">
+                    <select  formControlName="category" [(ngModel)]="editModel.category"class="form-select"  name="categories" id="categories">
                         <option disabled selected value > -- Select Category -- </option>
 
-                        <option value="0">Health</option>
-                        <option value="1">Home</option>
-                        <option value="2">Sporting</option>
-                        <option value="3">Children</option>
-                        <option value="4">Style</option>
-                        <option value="5">Other</option>
+                        <option value=0>Health</option>
+                        <option value=1>Home</option>
+                        <option value=2>Sporting</option>
+                        <option value=3>Children</option>
+                        <option value=4>Style</option>
+                        <option value=5>Other</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -125,8 +125,9 @@
             </form>
         </div>
         <div class="modal-footer d-flex justify-content-between">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button (click)="update()"  type="button" class="btn btn-success"><i class="bi bi-plus-lg"></i> Update</button>
+          <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button (click)="update()" type="button" class="btn btn-primary"><i class="bi bi-pen-fill"></i> Edit</button>
+
         </div>
       </div>
     </div>
@@ -136,50 +137,88 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Edit Product Info</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form>
-                <div class="form-group">
-                    <label  label for="exampleInputEmail1">Product Name</label>
-                    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter product name">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Description</label>
-                    <textarea class="form-control" id="Description" placeholder="Enter description"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Price</label>
-                    <input type="text" class="form-control" id="price" placeholder="Enter price EGP">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Discount</label>
-                    <input type="number" class="form-control" id="discount" placeholder="Enter Discount%">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Quantity</label>
-                    <input type="number" class="form-control" id="exampleInputPassword1" placeholder="0">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Categories</label>
-                    <select class="form-select"  name="categories" id="categories">
-                        <option disabled selected value [selected]="true"> -- Select Category -- </option>
-                        <option value="0">Electronics</option>
-                        <option value="1">Fashion</option>
-                        <option value="2">Home & Office</option>
-                        <option value="3">Furnitures</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Image URL</label>
-                    <input type="text" class="form-control" id="exampleInput1" placeholder="Enter Image URL">
-                </div>
-            </form>
+          <form [formGroup]="addForm">
+            <div class="form-group">
+              <div class="err alert alert-danger" *ngIf="addForm.controls['name'].errors?.['required'] && addForm.controls['name'].touched && addForm.controls['name'].dirty">
+                Name Is Required
+              </div>
+
+              <div class="err alert alert-danger" *ngIf="addForm.controls['name'].errors?.['minlength'] && addForm.controls['name'].touched && addForm.controls['name'].dirty">
+                Minimum Length is 4
+              </div>
+                <label  label for="exampleInputEmail1">Name</label>
+                <input formControlName="name"  type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter product name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Description</label>
+                <textarea formControlName="description"  class="form-control" id="Description" placeholder="Enter description"></textarea>
+            </div>
+            <div class="form-group">
+              <div class="err alert alert-danger" *ngIf="addForm.controls['price'].errors?.['required'] && addForm.controls['price'].touched && addForm.controls['price'].dirty">
+                Price Is Required
+              </div>
+
+              <div class="err alert alert-danger" *ngIf="addForm.controls['price'].errors?.['min'] && addForm.controls['price'].touched && addForm.controls['price'].dirty">
+                Minimum Price is 1 L.E
+              </div>
+                <label for="exampleInputPassword1">Price</label>
+                <input min="1" formControlName="price"  type="number" class="form-control" id="price" placeholder="Enter price EGP">
+            </div>
+            <div class="form-group">
+              <div class="err alert alert-danger" *ngIf="addForm.controls['discount'].errors?.['required'] && addForm.controls['discount'].touched && addForm.controls['discount'].dirty">
+                Discount Is Required
+              </div>
+
+              <div class="err alert alert-danger" *ngIf="addForm.controls['discount'].errors?.['min'] && addForm.controls['discount'].touched && addForm.controls['discount'].dirty">
+                Minimum Discount is 0 %
+              </div>
+                <label for="exampleInputPassword1">Discount</label>
+                <input formControlName="discount"  type="number" class="form-control" id="discount" placeholder="Enter Discount%">
+            </div>
+            <div class="form-group">
+              <div class="err alert alert-danger" *ngIf="addForm.controls['quantity'].errors?.['required'] && addForm.controls['quantity'].touched && addForm.controls['quantity'].dirty">
+                Quantity Is Required
+              </div>
+
+              <div class="err alert alert-danger" *ngIf="addForm.controls['quantity'].errors?.['min'] && addForm.controls['quantity'].touched && addForm.controls['quantity'].dirty">
+                Minimum Quantity is 1 unit
+              </div>
+                <label for="exampleInputPassword1">Quantity</label>
+                <input formControlName="quantity" type="number" class="form-control" id="exampleInputPassword1" placeholder="0">
+            </div>
+            <div class="form-group">
+
+
+                <label for="exampleInputPassword1">Categories</label>
+
+                <select  formControlName="category"  class="form-select"  name="categories" id="categories">
+                    <option disabled selected value > -- Select Category -- </option>
+
+                    <option value=0>Health</option>
+                    <option value=1>Home</option>
+                    <option value=2>Sporting</option>
+                    <option value=3>Children</option>
+                    <option value=4>Style</option>
+                    <option value=5>Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+              <div class="err alert alert-danger" *ngIf="addForm.controls['picture'].errors?.['required'] && addForm.controls['picture'].touched && addForm.controls['picture'].dirty">
+                Picture Is Required
+              </div>
+                <label for="exampleInputPassword1">Image URL</label>
+                <input formControlName="picture"   type="text" class="form-control" id="exampleInput1" placeholder="Enter Image URL">
+            </div>
+
+        </form>
         </div>
         <div class="modal-footer d-flex justify-content-between">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary"><i class="bi bi-pen-fill"></i> Edit</button>
+          <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button  (click)="add()" type="button" class="btn btn-success"><i class="bi bi-plus-lg"></i> Add</button>
         </div>
       </div>
     </div>

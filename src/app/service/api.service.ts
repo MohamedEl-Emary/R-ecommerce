@@ -51,4 +51,10 @@ export class ApiService {
 return this.http.post(environment.baseUrl+"Product/EditProduct",product);
 
   }
+  deleteProduct(product:any){
+    return this.http.post(environment.baseUrl+"Product/DeleteProduct",product);
+  }
+  addProduct(product:any){
+    return this.http.post(environment.baseUrl+"Product/AddProduct",product);
+  }
 }
