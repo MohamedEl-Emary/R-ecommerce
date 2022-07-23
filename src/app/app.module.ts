@@ -19,6 +19,12 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import {  FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { StarComponent } from './star/star.component';
 import { ProfileComponent } from './profile/profile.component';
+import { HealthComponent } from './health/health.component';
+import { HomeComponent } from './home/home.component';
+import { SportComponent } from './sport/sport.component';
+import { ChildrenComponent } from './children/children.component';
+import { StyleComponent } from './style/style.component';
+import { OtherComponent } from './other/other.component';
 
 @NgModule({
   imports: [
@@ -41,7 +47,13 @@ import { ProfileComponent } from './profile/profile.component';
     CheckoutComponent,
     LoginComponent,
     StarComponent,
-    ProfileComponent
+    ProfileComponent,
+    HealthComponent,
+    HomeComponent,
+    SportComponent,
+    ChildrenComponent,
+    StyleComponent,
+    OtherComponent
   ]
   ,
   providers: [{

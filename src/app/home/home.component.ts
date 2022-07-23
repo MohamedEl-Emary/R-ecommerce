@@ -6,13 +6,14 @@ import { CartService } from '../service/cart.service';
 import { FavListService } from '../service/fav-list.service';
 
 @Component({
-  selector: 'app-electronics',
-  templateUrl: './electronics.component.html',
-  styleUrls: ['./electronics.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class ElectronicsComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
-  status:boolean = false;
+
+ status:boolean = false;
   public productList : any;
   isAuthenticated=false;
   constructor(
@@ -25,7 +26,15 @@ export class ElectronicsComponent implements OnInit {
   async ngOnInit() {
      this.api.getProduct()
     .subscribe(async res=>{
-      this.productList = res;
+      let r = res as any[];
+      let result: any[] =[];
+      r.forEach(e=>{
+        if(e.category==1){
+            result.push(e);
+        }
+      })
+      this.productList = result;
+
 
            console.log(res);
       this.productList.forEach((a:any)=>{
@@ -56,5 +65,4 @@ this.isAuthenticated = true;
     this.status = !this.status;
 
   }
-
 }

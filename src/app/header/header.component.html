@@ -68,16 +68,25 @@
           </div>
           <ul class="navbar-nav px-10">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" routerLink="Electronics"><i class="bi bi-tv"></i> Electronics</a>
+              <a class="nav-link" aria-current="page" [routerLink]="['products']"><i class="bi bi-tv"></i> All</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><i class="bi bi-tag"></i> Fashion</a>
+              <a class="nav-link" aria-current="page" [routerLink]="['health']"><i class="bi bi-tv"></i> Health</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><i class="bi bi-house-door"></i> Home & Office</a>
+              <a class="nav-link" [routerLink]="['home']"><i class="bi bi-tag"></i> Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><i class="bi bi-lamp"></i> Furnitures</a>
+              <a class="nav-link" [routerLink]="['sporting']"><i class="bi bi-house-door"></i> Sporting</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['children']"><i class="bi bi-lamp"></i> Children</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['style']"><i class="bi bi-lamp"></i> Style</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['other']"><i class="bi bi-lamp"></i> Other</a>
             </li>
 
           </ul>

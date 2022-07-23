@@ -1,18 +1,18 @@
-import { AuthServiceService } from './../service/auth-service.service';
+ import { AuthServiceService } from './../service/auth-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../service/api.service';
 import { CartService } from '../service/cart.service';
 import { FavListService } from '../service/fav-list.service';
-
 @Component({
-  selector: 'app-electronics',
-  templateUrl: './electronics.component.html',
-  styleUrls: ['./electronics.component.scss']
+  selector: 'app-children',
+  templateUrl: './children.component.html',
+  styleUrls: ['./children.component.scss']
 })
-export class ElectronicsComponent implements OnInit {
+export class ChildrenComponent implements OnInit {
 
-  status:boolean = false;
+
+status:boolean = false;
   public productList : any;
   isAuthenticated=false;
   constructor(
@@ -25,7 +25,15 @@ export class ElectronicsComponent implements OnInit {
   async ngOnInit() {
      this.api.getProduct()
     .subscribe(async res=>{
-      this.productList = res;
+      let r = res as any[];
+      let result: any[] =[];
+      r.forEach(e=>{
+        if(e.category==3){
+            result.push(e);
+        }
+      })
+      this.productList = result;
+
 
            console.log(res);
       this.productList.forEach((a:any)=>{
