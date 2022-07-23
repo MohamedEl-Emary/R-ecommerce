@@ -1,3 +1,4 @@
+import { BehaviorSubject } from 'rxjs';
 import { FavListService } from './../service/fav-list.service';
 import { CartService } from './../service/cart.service';
 import { ApiService } from './../service/api.service';
@@ -12,12 +13,11 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class ProductPageComponent implements OnInit {
   stars = [1, 2, 3, 4, 5];
-  rating = 0;
+  rating =0;
   hoverState = 0;
   editComment:any;
   commentEdit!:string
-Date=new Date("2022-07-23T08:13:55.8988516")
-  enter(i: number) {
+   enter(i: number) {
     this.hoverState = i;
   }
 
@@ -26,7 +26,16 @@ Date=new Date("2022-07-23T08:13:55.8988516")
   }
 
   updateRating(i: number) {
-    this.rating = i;
+console.log(i)
+    this.api.rate({id:this.product.rateId ,productId:this.product.id,rate:i-1,userId:'',isRated:false}).
+    subscribe(res=>{
+      console.log(res);
+     if(res !=-1){
+      this.rating=i;
+      this.product.rateId = res;
+     }
+    });
+    console.log(this.rating);
   }
 
   productId:any ='';
@@ -42,6 +51,7 @@ Date=new Date("2022-07-23T08:13:55.8988516")
     }
 
   ngOnInit(): void {
+
     this.productId = this.route.snapshot.paramMap.get('id');
 console.log(this.profile)
 
@@ -53,6 +63,10 @@ this.apiService.getProductById(this.productId).subscribe(res=>{
   this.product.qty=1;
   this.product.total = res.price;
   console.log(res);
+  console.log(res.isRated)
+  if(res.isRated == true){
+    this.rating=(res.rate+1)
+  }
   this.apiService.getComments(this.productId).subscribe(res=>{
 
     this.comments = res;

@@ -20,7 +20,7 @@
                             </div>
                             <p class="about">{{product.description}}
                             </p>
-                            <div class="col-12 d-flex" >
+                            <div class="col-12 d-flex" *ngIf="token!=null">
                                 <h3 style="margin-right:20px ;">Rate this Product</h3>
                                 <div class="row d-flex"  *ngFor="let star of stars">
                                     <app-star [starId]="star" [rating]="hoverState || rating" (enter)="enter($event)" (leave)="leave($event)"

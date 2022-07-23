@@ -41,4 +41,7 @@ export class ApiService {
     console.log(id)
     return this.http.delete(environment.baseUrl+"User/DeleteComment?id="+id);
   }
+  rate(rate:any){
+    return this.http.post(environment.baseUrl+"User/Rate",rate);
+  }
 }
