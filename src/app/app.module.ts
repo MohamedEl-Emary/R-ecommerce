@@ -20,7 +20,6 @@ import {  FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { StarComponent } from './star/star.component';
 import { ProfileComponent } from './profile/profile.component';
 
-
 @NgModule({
   imports: [
     BrowserModule,

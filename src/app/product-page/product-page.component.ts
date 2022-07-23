@@ -14,7 +14,9 @@ export class ProductPageComponent implements OnInit {
   stars = [1, 2, 3, 4, 5];
   rating = 0;
   hoverState = 0;
-
+  editComment:any;
+  commentEdit!:string
+Date=new Date("2022-07-23T08:13:55.8988516")
   enter(i: number) {
     this.hoverState = i;
   }
@@ -54,13 +56,19 @@ this.apiService.getProductById(this.productId).subscribe(res=>{
   this.apiService.getComments(this.productId).subscribe(res=>{
 
     this.comments = res;
+   this.comments.forEach(e=>{
+    e.commentDate = this.getCustomDate(new Date(e.commentDate));
+   })
+   console.log()
     console.log(this.comments);
   });
  });
 
 
-
-    }
+}
+getCustomDate(Date:Date){
+ return Date.toLocaleDateString()+" "+Date.getMinutes()+":"+Date.getSeconds()
+}
     postComment(){
       console.log('post')
       if(!this.comment.valid){
@@ -92,6 +100,41 @@ this.favListService.addFavorite(product);
 
 
 
+    }
+    edit(comment:any){
+      this.editComment =comment;
+      this.commentEdit = this.editComment.comment;
+      console.log(this.editComment)
+    }
+    update(){
+      console.log(this.commentEdit);
+
+        console.log(this.editComment);
+        this.api.updateComment(this.editComment.id,this.commentEdit).subscribe(e=>{
+          if(e == true){
+            this.comments.forEach(e=>{
+              if(e.id == this.editComment.id){
+                this.editComment.comment = this.commentEdit;
+              }
+            })
+          }else{
+            alert("Can't Update At This Time")
+          }
+        });
+    }
+    deleteComment(comment:any){
+    this.api.deleteComment(comment.id).subscribe(e=>{
+      if(e as unknown as boolean == true){
+          for (let index = 0; index < this.comments.length; index++) {
+          if(this.comments[index].id==comment.id){
+            this.comments.splice(index,1);
+          }
+
+          }
+      }else{
+        alert("Can't Delete at This Time")
+      }
+    })
     }
 
 }

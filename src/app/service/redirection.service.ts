@@ -17,6 +17,11 @@ export class RedirectionService implements CanActivate {
     if(route.routeConfig?.path == "Fav-list"&&check){
       return true;
     }
+    if(route.routeConfig?.path == "profile"&&check){
+      return true;
+    }else if(route.routeConfig?.path == "profile"&&!check){
+      this.activeRoute.navigate(['login']);
+    }
     console.log(check);
     if(check){
      this.activeRoute.navigate(['']);

@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  baseUrl:"https://recycleit-eco.herokuapp.com/eco/",
-  secondUrl:"https://www.recycleit.somee.com/"
-  //baseUrl:"https://localhost:44350/eco/"
+ // baseUrl:"https://recycleit-eco.herokuapp.com/eco/",
+  secondUrl:"https://www.recycleit.somee.com/",
+  baseUrl:"https://localhost:44350/eco/"
 };
 
 /*

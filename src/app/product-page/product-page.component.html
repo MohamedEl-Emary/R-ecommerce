@@ -27,9 +27,9 @@
                                     (bigClick)="updateRating(star)">
                                     </app-star>
                                 </div>
-                             </div>  
+                             </div>
                             <div class="row">
-                                                         
+
                             <div class="col-12 d-flex justify-content-between">
                               <button *ngIf="product.quantity >0" (click)=addtocart(product)  class="btn btn-success" href=""><i class="bi bi-bag-plus-fill" ></i> Add to Cart</button>
                               <button (click)="addToFavorite(product)" class="btn btn-danger "><i class="bi bi-heart"></i> Add to Favorites</button>
@@ -50,7 +50,7 @@
                   </div>
 
                 <div class="card p-3" *ngFor="let comment of comments">
-                
+
                     <div class="d-flex justify-content-between align-items-center">
 
 
@@ -64,14 +64,15 @@
                   <div class=" d-flex justify-content-between mt-2 align-items-center">
 
                     <div class="reply px-4">
-                        <small style="color:#6c6c6c ;">3 Days ago</small>
+                        <small style="color:#6c6c6c ;">{{comment.commentDate}}</small>
 
                     </div>
-                    <div class="icons align-items-center">
 
-                        <i class="bi bi-trash btn btn-danger"></i>
-                        <i class="bi bi-pen btn btn-primary"></i>
-                        
+                    <div class="icons align-items-center" *ngIf="comment.userId==profile.userId">
+
+                        <i  (click)="deleteComment(comment)" class="bi bi-trash btn btn-danger"></i>
+                        <i (click)="edit(comment)" data-bs-target="#exampleModal" data-bs-toggle="modal"  class="bi bi-pen btn btn-primary"></i>
+
                     </div>
 
                   </div>
@@ -89,3 +90,34 @@
     </div>
 
 </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" >Edit Profile Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Message:</label>
+            <input type="text" class="form-control" id="recipient-name" [(ngModel)]="commentEdit"  name="address">
+          </div>
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+         <button type="button" class="btn btn-primary" (click)="update()" >Update</button>
+      </div>
+      </div>
+      <div class="modal-footer">
+         <button type="button" class="btn btn-primary"
+         style="padding:5px;
+          background-color:rgb(87, 87, 182);
+          color:white">
+          Update</button>
+      </div>
+    </div>
+  </div>

@@ -2,6 +2,7 @@ import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { UserData } from '../shared/UserData';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,14 @@ export class ApiService {
   getMyProfile(){
     return this.http.get(environment.secondUrl+"User/GetUserProfile");
   }
-
+  editProfile(userData:UserData){
+    return this.http.put(environment.secondUrl+"User/EditUserProfile",userData);
+  }
+  updateComment(id:any,comment:any){
+    return this.http.post(environment.baseUrl+"User/EditComment",{id:id,message:comment});
+  }
+  deleteComment(id:any){
+    console.log(id)
+    return this.http.delete(environment.baseUrl+"User/DeleteComment?id="+id);
+  }
 }

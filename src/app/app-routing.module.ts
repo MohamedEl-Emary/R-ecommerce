@@ -21,7 +21,7 @@ const routes: Routes = [
   {path:'Product-Form',component:ProductFormComponent},
   {path:'product/:id',component:ProductPageComponent},
   {path:'checkout',component:CheckoutComponent},
-  {path:'profile',component:ProfileComponent},
+  {path:'profile',component:ProfileComponent,canActivate:[RedirectionService]},
 ];
 
 @NgModule({
