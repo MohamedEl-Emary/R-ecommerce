@@ -10,7 +10,7 @@
               <a style="cursor:pointer ;"
                class="text-dark" [routerLink]="" (click)="gotoProduct('product',item.id)" > {{item.name}}</a>
             </h5>
-            <p class="des small text-muted font-italic">{{item.description}}</p>
+            <p class="des small text-muted font-italic ">{{item.description}}</p>
               <h5 class="price font-weight-bold"><strong>EGP {{item.price}}</strong></h5>
               <div class="row">
                 <button *ngIf="item.quantity>0" (click)=addtocart(item) class="mb-2 btn btn-success" href=""><i class="bi bi-bag-plus-fill"></i> Add to Cart</button>

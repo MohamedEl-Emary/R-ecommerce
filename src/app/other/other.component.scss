@@ -1,0 +1,50 @@
+.card{
+    border-radius: 4px;
+    box-shadow: 0 6px 12px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: 0.5s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+}
+.card:hover{
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+// .bi-bag-plus-fill{
+//     font-size: 1.5rem;
+//     color: #3ec673;
+//     transition: 0.5s;
+// }
+// .bi-bag-plus-fill:hover{
+//     color: #22673c;
+
+// }
+.fav{
+    color: rgb(193, 22, 22);
+    transition: transform 0.5s;
+}
+.fav:hover{
+    transform: rotate(180deg);
+    
+}
+.des{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100ch;
+}
+.name{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200ch;
+    
+}
+.name a{
+    text-decoration: none;
+}
+.card-img{
+    width: 200px;
+    height: 200px;
+}
+.btn-success:hover{
+    color:#3ec673 ;
+    background-color: #fff;
+}
