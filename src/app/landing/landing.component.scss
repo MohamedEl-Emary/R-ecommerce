@@ -35,3 +35,9 @@
     transform: rotate(180deg);
     
 }
+.des{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100ch;
+}
